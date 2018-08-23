@@ -5,7 +5,9 @@ const config = require('./config/base');
 const router = require('./routes/imgUploading');
 const cors = require('@koa/cors');
 
-app.use(cors());
+app.use(cors({
+  credentials: true
+}));
 app.use(koaBody(config.koaBodyConfig));
 app.use(router.routes());
 app.use(router.allowedMethods());

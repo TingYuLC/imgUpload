@@ -9,8 +9,18 @@ imp.getStatus = async (ctx, next) => {
   ctx.body = rst;
 };
 
-imp.saveImg = async (ctx, next) => {
-  const rst = await models.saveImg(ctx.request.files);
+imp.saveImgServer = async (ctx, next) => {
+  const rst = await models.saveImgServer(ctx.request.files);
+  ctx.body = {
+    code: 0,
+    data: {
+      imgServer: rst
+    }
+  }
+}
+
+imp.saveImgStorage = async (ctx, next) => {
+  const rst = await models.saveImgStorage(ctx.request.files);
   if (rst === 'error') {
     ctx.body = {
       code: errCode.common
@@ -19,7 +29,7 @@ imp.saveImg = async (ctx, next) => {
     ctx.body = {
       code: 0,
       data: {
-        img: rst
+        imgStorage: rst
       }
     }
   }

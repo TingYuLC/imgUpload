@@ -22,7 +22,7 @@ imp.uploadFile = (key, path) => {
         if (err || error) {
           return reject('error')
         }
-        return resolve('http://' + data.Location)
+        return resolve('//' + data.Location)
       })
     })
   });

@@ -7,6 +7,7 @@ router.all('*', common.errorHandle);
 
 router.get('/status', controllers.getStatus);
 
-router.post('/saveImg', controllers.saveImg);
+router.post('/saveImgServer', controllers.saveImgServer);
+router.post('/saveImgStorage', controllers.saveImgStorage);
 
 module.exports = router;
