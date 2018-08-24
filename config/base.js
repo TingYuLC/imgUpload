@@ -20,6 +20,17 @@ const config = {
       dbName: 'images',      
     }
   },
+  corsConfig: {
+    origin: (ctx) => {
+      let allowedOrigin = ['http://localhost:8080', 'http://10.9.8.39:8080', 'http://upload.luojc.cn'];
+      let origin = ctx.header.origin;
+      if (allowedOrigin.includes(origin)) {
+        return origin;
+      }
+      return false;
+    },
+    credentials: true
+  },
   koaBodyConfig: {
     multipart:true, // 支持文件上传
     encoding:'gzip',
