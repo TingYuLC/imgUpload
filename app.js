@@ -8,7 +8,7 @@ const cors = require('@koa/cors');
 app.use(cors({
   credentials: true
 }));
-app.use(koaBody(config.koaBodyConfig));
+app.use(koaBody());
 app.use(router.routes());
 app.use(router.allowedMethods());
 

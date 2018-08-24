@@ -9,6 +9,11 @@ imp.getStatus = async (ctx, next) => {
   ctx.body = rst;
 };
 
+imp.saveImgBase = async (ctx, next) => {
+  const rst = await models.saveImgBase(ctx.request.body);
+  ctx.body = rst;
+}
+
 imp.saveImgServer = async (ctx, next) => {
   const rst = await models.saveImgServer(ctx.request.files);
   ctx.body = {

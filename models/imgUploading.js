@@ -1,7 +1,19 @@
 const cos = require('../utils/cos');
+const dac = require('./dac');
 
 class imgUploading {
   constructor () {
+  }
+
+  saveImgBase (data) {
+    return insertDataImg().then(rows => {
+      return Promise.resolve({code: 0, msg: 'ok'})
+    });
+
+    function insertDataImg () {
+      const sql = `insert into save_images set ?`
+      return dac.query(sql, data);
+    }
   }
 
   saveImgServer (files) {
