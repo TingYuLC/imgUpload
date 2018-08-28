@@ -22,13 +22,17 @@ const config = {
   },
   corsConfig: {
     origin: (ctx) => {
-      let allowedOrigin = ['http://localhost:8080', 'http://10.9.8.39:8080', 'http://upload.luojc.cn'];
+      let allowedOrigin = ['https://upload.luojc.cn'];
       let origin = ctx.header.origin;
+      if (origin.indexOf('http://10.9.8') > -1 || origin.indexOf('http://localhost') > -1) {
+        return origin;
+      }
       if (allowedOrigin.includes(origin)) {
         return origin;
       }
       return false;
     },
+    allowMethods: ['GET,HEAD,PUT,PATCH,POST,DELETE'],
     credentials: true
   },
   koaBodyConfig: {
